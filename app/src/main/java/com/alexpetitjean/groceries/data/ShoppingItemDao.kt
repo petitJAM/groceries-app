@@ -12,6 +12,11 @@ interface ShoppingItemDao {
     @Query("SELECT * FROM shopping_items")
     fun getShoppingItems(): Flowable<List<ShoppingItem>>
 
+    // Broken: https://youtrack.jetbrains.com/issue/KT-17959
+    // Kotlin doesn't preserve the parameter names
+    @Query("SELECT * FROM shopping_items WHERE shopping_list_id = :arg0")
+    fun getShoppingItems(shoppingListId: Int): Flowable<List<ShoppingItem>>
+
     @Insert
     fun insertAll(vararg shoppingItem: ShoppingItem)
 

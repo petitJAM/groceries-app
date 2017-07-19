@@ -1,9 +1,10 @@
-package com.alexpetitjean.groceries
+package com.alexpetitjean.groceries.ui
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.alexpetitjean.groceries.data.ShoppingItem
+import com.alexpetitjean.groceries.inflate
 import com.alexpetitjean.myapplication.R
 import kotlinx.android.synthetic.main.item_shopping_item.view.*
 

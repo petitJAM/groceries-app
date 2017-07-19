@@ -1,4 +1,4 @@
-package com.alexpetitjean.groceries
+package com.alexpetitjean.groceries.ui
 
 import android.arch.persistence.room.Room
 import android.support.v7.app.AppCompatActivity
@@ -14,7 +14,7 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class ShoppingItemsActivity : AppCompatActivity() {
 
     val db: GroceriesDatabase by lazy {
         Room.databaseBuilder(applicationContext, GroceriesDatabase::class.java, "groceries.db").build()
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
                 .subscribeBy(
                         onNext = { name ->
                             if (name.isNotEmpty()) {
-                                val newItem = ShoppingItem(name = name)
+                                val newItem = ShoppingItem(name = name, shoppingListId = 0)
                                 shoppingItemDao.insertAll(newItem)
                             }
                         })
