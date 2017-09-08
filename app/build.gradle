@@ -3,12 +3,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 26
     buildToolsVersion "26.0.0"
     defaultConfig {
         applicationId "com.alexpetitjean.groceries"
         minSdkVersion 21
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -38,28 +38,39 @@ dependencies {
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:25.4.0'
-    implementation 'com.android.support:design:25.4.0'
     testImplementation 'junit:junit:4.12'
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    ext.supportLibraryVersion = '26.0.1'
+    implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
+    implementation "com.android.support:design:$supportLibraryVersion"
+    implementation "com.android.support:recyclerview-v7:$supportLibraryVersion"
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
-    implementation "io.reactivex.rxjava2:rxjava:2.1.0"
+    implementation "io.reactivex.rxjava2:rxjava:2.1.1"
     implementation "io.reactivex.rxjava2:rxandroid:2.0.1"
     implementation "io.reactivex.rxjava2:rxkotlin:2.1.0"
 
+    implementation "nl.littlerobots.rxlint:rxlint:1.5"
     implementation "com.trello.rxlifecycle2:rxlifecycle-android-lifecycle-kotlin:2.1.0"
-
     implementation "com.jakewharton.rxbinding2:rxbinding-kotlin:2.0.0"
 
-    compile "android.arch.lifecycle:runtime:1.0.0-alpha5"
-    compile "android.arch.lifecycle:extensions:1.0.0-alpha5"
-    kapt "android.arch.lifecycle:compiler:1.0.0-alpha5"
+    ext.architectureComponentVersion = '1.0.0-alpha9'
+    implementation "android.arch.lifecycle:runtime:$architectureComponentVersion"
+    implementation "android.arch.lifecycle:extensions:$architectureComponentVersion"
+    kapt "android.arch.lifecycle:compiler:$architectureComponentVersion"
 
-    implementation "android.arch.persistence.room:runtime:1.0.0-alpha5"
-    kapt "android.arch.persistence.room:compiler:1.0.0-alpha5"
-    implementation "android.arch.persistence.room:rxjava2:1.0.0-alpha5"
+    implementation "android.arch.persistence.room:runtime:$architectureComponentVersion"
+    implementation "android.arch.persistence.room:rxjava2:$architectureComponentVersion"
+    kapt "android.arch.persistence.room:compiler:$architectureComponentVersion"
+
+    implementation "co.zsmb:materialdrawer-kt:1.1.0"
+
+    implementation "com.joanzapata.iconify:android-iconify-material:2.2.2"
 
     implementation "com.facebook.stetho:stetho-okhttp3:1.5.0"
-    implementation 'com.android.support:recyclerview-v7:25.4.0'
+
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:1.5.1"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:1.5.1"
 }
